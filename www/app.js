@@ -1,12 +1,13 @@
-const image_input = document.querySelector("#image-input");
+const express = require("express");
+const app = express();
+const bodyParser = require("body-parser");
+const userRoutes = require("./routes/user");
 
-image_input.addEventListener("change", function () {
-  const reader = new FileReader();
-  reader.addEventListener("load", () => {
-    const uploaded_image = reader.result;
-    document.querySelector(
-      "#display-image"
-    ).style.backgroundImage = `url(${uploaded_image})`;
-  });
-  reader.readAsDataURL(this.files[0]);
+app.use(bodyParser.urlencoded());
+app.use(userRoutes);
+
+app.use((req, res, next) => {
+  res.status(404).send("<h1>Stronę nie znaleziono błąd 404</h1>");
 });
+
+app.listen(3000);
