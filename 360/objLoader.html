@@ -2,16 +2,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <script type="text/javascript">
+"use strict"
 var gl;
 var shaderProgram;
 var uPMatrix;
 var vertexPositionBuffer;
-//var vertexColorBuffer;
+var vertexCoordsBuffer;
 var indexBuffer;
+var textureBuffer;
 
 function MatrixMul(a,b) //Mnożenie macierzy
 {
-  c = [
+  let c = [
   0,0,0,0,
   0,0,0,0,
   0,0,0,0,
@@ -30,338 +32,123 @@ function MatrixMul(a,b) //Mnożenie macierzy
   }
   return c;
 }
+async function* makeTextFileLineIterator(fileURL) { //Odczyd pliku z serwera i podział na poszczególne linie.
+  const utf8Decoder = new TextDecoder('utf-8');
+  const response = await fetch(fileURL);
+  const reader = response.body.getReader();
+  let { value: chunk, done: readerDone } = await reader.read();
+  chunk = chunk ? utf8Decoder.decode(chunk) : '';
 
-function createDodecahedron(){
-      const t = (1 + Math.sqrt(5))/2;
-      const d = t - 1;
+  const re = /\n|\r|\r\n/gm;
+  let startIndex = 0;
+  let result;
 
-      let vertexPosition = [
-
-            1,  1,  1,   
-            t,  0,  d, 
-            t,  0, -d,//*/
-        
-            1,  1,  1,   
-            t,  0, -d,
-            1,  1, -1,//*/
-          
-            1,  1,  1,   
-            1,  1,  -1,   
-     	      d,  t,  0,//*/
-     	    
-     	         
-	          t,  0, -d,
-	          1, -1, -1,
-	          0, -d, -t,//*/
-	    
-	         t,  0, -d,
-	          0, -d, -t,
-            0,  d, -t,//*/
-
-            t,  0, -d,
-            0,  d, -t,
-            1,  1, -1,//*/
-            
-
-            0, -d, -t,
-           -1, -1, -1,
-           -t,  0, -d,//*/
-            
-            0, -d, -t,
-           -t,  0, -d,
-           -1,  1, -1,//*/
-                      
-            0, -d, -t,
-           -1,  1, -1,
-            0,  d, -t,//*/
-
-           -t,  0,  d,
-           -1, -1,  1, 
-            0, -d,  t,//*/
-
-           -t,  0,  d,
-            0, -d,  t,
-            0,  d,  t,//*/
-
-           -t,  0,  d,
-            0,  d,  t,
-           -1,  1,  1,//*/
-
-
-            0,  d,  t,
-            0, -d,  t,
-            1, -1,  1,//*/
-
-            0,  d,  t,
-            1, -1,  1,
-            t,  0,  d,//*/
-
-            0,  d,  t,
-            t,  0,  d,
-            1,  1,  1,//*/
-            
-            
-      	    t,  0,  d,       
-            1, -1,  1,   
-            d, -t,  0,//*/
-            
-	          t,  0,  d,
-	          d, -t,  0,
-	          1, -1, -1,//*/
-            
- 	          t,  0,  d,
-            1, -1, -1,
-            t,  0, -d,//*/
-            
-            
-            1,  1, -1,
-            0,  d, -t,
-           -1,  1, -1,//*/
-//*
-//_________________________________________________________
-//wierzcholki ze zla interpolacją na teksture
-
-            // -1,  1,  1,
-            // 0,  d,  t,
-            // 1,  1,  1,//*/
-          
-          // -1,  1,  1,	   
-          //   1,  1,  1,
-          //   d,  t,  0,//*/
-
-          // -1,  1,  1,
-          //   d,  t,  0,   
-          // -d,  t,  0,//*/
-
-
-          //  -1, -1, -1,
-          //  -d, -t,  0,
-          //  -1, -1,  1,//*/
-            
-          //  -1, -1, -1,
-          //  -1, -1,  1, 
-          //  -t,  0,  d,//*/
-            
-          //  -1, -1, -1,       
-          //  -t,  0,  d,       
-          //  -t,  0, -d,//*/
-           
-           
-          //  -1,  1, -1,
-          //  -t,  0, -d,
-          //  -t,  0,  d,//*/
-           
-          //  -1,  1, -1,
-          //  -t,  0,  d,
-          //  -1,  1,  1,//*/
-
-          //  -1,  1, -1,
-          //  -1,  1,  1,
-          //  -d,  t,  0,//*/
-
-           //   1, -1, -1,
-          //   d, -t,  0,
-          //  -d, -t,  0,//*/
-
-          //   1, -1, -1,
-          //  -d, -t,  0,
-          //  -1, -1, -1,//*/
-
-          //   1, -1, -1,
-          //  -1, -1, -1,
-          //   0, -d, -t,//*/
-           
-            
-
-//            -1, -1, -1,
-//            -d, -t,  0,
-//            -1, -1,  1,//*/
-            
-//            -1, -1, -1,
-//            -1, -1,  1, 
-//            -t,  0,  d,//*/
-            
-//            -1, -1, -1,       
-//            -t,  0,  d,       
-//            -t,  0, -d,//*/
-           
-           
-//            -1,  1, -1,
-//            -t,  0, -d,
-//            -t,  0,  d,//*/
-           
-//            -1,  1, -1,
-//            -t,  0,  d,
-//            -1,  1,  1,//*/
-
-//            -1,  1, -1,
-//            -1,  1,  1,
-//            -d,  t,  0,//*/
-
-
-//                       -1,  1,  1,
-//             d,  t,  0,   
-//           -d,  t,  0,//*/
-            
-//             1,  1, -1,
-//            -1,  1, -1,
-//            -d,  t,  0,//*/
-
-//             1,  1, -1,
-//            -d,  t,  0,
-//             d,  t,  0,//*/
-            
-            
-//            -1, -1,  1, 
-//            -d, -t,  0,
-//             d, -t,  0,//*/
-//  //*
-//            -1, -1,  1, 
-//   	        d, -t,  0,
-//             1, -1,  1,//*/
-//   //*
-//            -1, -1,  1,          
-//             1, -1,  1,
-//             0, -d,  t//*/
-
-
-//_________________________________________________________ 
-
-//poprawione wierzcholki
-            -d, -t, -0.000001,
-           -t, 0,  -0.000001,
-           -t, 0,  -d,//*/
-
-
-          -d, -t, 0,
-           -t, 0,  d,
-           -t, 0,  0,//*/
-       
-           -d, -t, -0.000001,
-           -t, 0,  -d,//*/
-           -1, -1,  -1, 
-            
-           -d, -t, 0,
-           -1, -1, 1,  
-           -t, 0,  d,
-
-           
- //___________________________________________         
-         -d,  t, -0.000001,
-         -t,  0, -d,
-         -t,  0,  -0.00001,//*/
-
-         -d,  t, 0,
-         -t,  0, 0,
-         -t,  0,  d,//*/
-                        
-           -d,  t, 0,
-           -t,  0,  d,
-           -1,  1,  1,//*/
-
-           -d,  t, -0.0000001,
-           -1,  1,  -1,
-           -t,  0,  -d,//*/
-
-                    
- //___________________________________________
-
-            0,  -d,  -t,
-            -1,  -1,  -1,
-            1,  -1,  -1,//*/
-
-            1,-1,-1,
-            -1,-1,-1,
-            0,-t+0.00001,-0.00001,
-
-            -1,-1,-1,
-            0,-t+0.00001,-0.00001,
-            -d,-t+0.00001,-0.00001,
-
-            1,-1,-1,
-            0,-t+0.00001,-0.00001,
-            d, -t+0.00001,-0.00001,
-
-
- //___________________________________________
-            0,  -d,  t,
-            -1,  -1,  1,
-            1,  -1,  1,//*/
-
-            1,-1,1,
-            -1,-1,1,
-            0,-t+0.00001,0.00001,
-
-            -1,-1,1,
-            0,-t+0.00001,0.00001,
-            -d,-t+0.00001,0.00001,
-
-            1,-1,1,
-            0,-t+0.00001,0.00001,
-            d,-t+0.00001,0.00001,
-
-
- //___________________________________________
-             0,  d,  t,
-            -1,  1,  1,
-            1,  1,  1,//*/
-
-            1,1,1,
-            -1,1,1,
-            0,t+0.00001,0.00001,
-
-            -1,1,1,
-            0,t+0.00001,0.00001,
-            -d,t+0.00001,0.00001,
-
-            1,1,1,
-            0,t+0.00001,0.00001,
-            d, t+0.00001,0.00001,
-
-
- //___________________________________________
-            1,1,-1,
-            -1,1,-1,
-            0,t+0.00001,-0.00001,
-
-            -1,1,-1,
-            0,t+0.00001,-0.00001,
-            -d,t+0.00001,-0.00001,
-
-            1,1,-1,
-            0,t+0.00001,-0.00001,
-            d, t+0.00001,-0.00001,
-
-      ]
-
-      return vertexPosition;
+  for (;;) {
+    let result = re.exec(chunk);
+    if (!result) {
+      if (readerDone) {
+        break;
+      }
+      let remainder = chunk.substr(startIndex);
+      ({ value: chunk, done: readerDone } = await reader.read());
+      chunk = remainder + (chunk ? utf8Decoder.decode(chunk) : '');
+      startIndex = re.lastIndex = 0;
+      continue;
+    }
+    yield chunk.substring(startIndex, result.index);
+    startIndex = re.lastIndex;
+  }
+  if (startIndex < chunk.length) {
+    // last line didn't end in a newline char
+    yield chunk.substr(startIndex);
+  }
 }
 
-
-function createCoordsDode()
+async function LoadObj(filename)
 {
-  let position = createDodecahedron();
-  let vertexCoords = [];
-  
-  for(let i = 0; i < position.length; i += 3){
-    const X = position[i+0];
-    const Y = position[i+1];
-    const Z = position[i+2];
-    const fi = Math.atan2(-Z, X); //atan(-Z/X)
-    const phi = Math.asin(Y / Math.sqrt(X*X+Y*Y+Z*Z)); //asin(Y/|R|)
-    const u = fi / (2 * Math.PI) + 0.5;
-    const v = phi / (Math.PI) + 0.5;
+  let rawVertexPosition = [0,0,0]; //Dodana 0 pozycja która nie będzie uzywana
+  let rawVertexNormal = [0,0,0];//Dodana 0 pozycja która nie będzie uzywana
+  let rawVertexCoords = [0,0];//Dodana 0 pozycja która nie będzie uzywana
 
-    vertexCoords.push(...[u,v]);
+  //Opis sceny 3D, położenie punktów w przestrzeni 3D w formacie X,Y,Z 
+  let vertexPosition = []; //Każdy punkt 3 składowe - X1,Y1,Z1
+  let vertexNormal = [];
+  let vertexCoords = [];
+  let indexes = [];
+
+
+  let aa = new Map();
+  for await (let line of makeTextFileLineIterator(filename)) {
+    const lineArray = line.split(' ');
+    switch(lineArray[0]) {
+      case "v": { //Położenie wierzchołków
+        const x = parseFloat(lineArray[1]);
+        const y = parseFloat(lineArray[2]);
+        const z = parseFloat(lineArray[3]);
+        rawVertexPosition.push(...[x,y,z]);
+        break;
+      };
+      case "vn": { //Wektor normalny
+        const xn = parseFloat(lineArray[1]);
+        const yn = parseFloat(lineArray[2]);
+        const zn = parseFloat(lineArray[3]);
+        rawVertexNormal.push(...[xn,yn,zn]);
+        break;
+      }
+      case "vt": { //Współrzędne tekstury
+        const u = parseFloat(lineArray[1]);
+        const v = parseFloat(lineArray[2]);
+        rawVertexCoords.push(...[u,v]);
+        break;
+      }
+      case "f": { //Indeksy trójkątów
+        const i0 = lineArray[1];
+        const i1 = lineArray[2];
+        const i2 = lineArray[3];
+        for(let ii of [i0,i1,i2]) {
+          if(!aa.has(ii)) { //Ten indeks nie był jeszcze przemapowany
+            //console.log(ii);
+            const iia = ii.split('/');
+            const indexVertexPosition = parseInt(iia[0]);//Indeks w tablicy położeń wierzchołków
+            const indexVertexCoords = parseInt(iia[1]); //Indeks w tablicy wspołrzędnych tekstur
+            const indexVertexNormal = parseInt(iia[2]); //Indeks w tablicy wektorów normalnych
+            const index = vertexPosition.length/3;
+            //console.log(index);
+            //Skopiuj wartości
+            vertexPosition.push(rawVertexPosition[indexVertexPosition*3+0]); //Skopiowanie położenia X
+            vertexPosition.push(rawVertexPosition[indexVertexPosition*3+1]); //Skopiowanie położenia Y
+            vertexPosition.push(rawVertexPosition[indexVertexPosition*3+2]); //Skopiowanie położenia Z
+
+            vertexNormal.push(rawVertexNormal[indexVertexNormal*3+0]); //Skopiowanie składowej X wektora normalnego
+            vertexNormal.push(rawVertexNormal[indexVertexNormal*3+1]); //Skopiowanie składowej Y wektora normalnego
+            vertexNormal.push(rawVertexNormal[indexVertexNormal*3+2]); //Skopiowanie składowej Z wektora normalnego
+
+            vertexCoords.push(rawVertexCoords[indexVertexCoords*2+0]); //Skopiowanie składowej U wspołrzędnej tekstury
+            vertexCoords.push(rawVertexCoords[indexVertexCoords*2+1]); //Skopiowanie składowej V wspołrzędnej tekstury
+            aa.set(ii,index);
+          }
+          //console.log(aa.get(ii));
+          indexes.push(aa.get(ii)) //Dodaj jego wynikowy indeks do tablicy indeksów
+        }
+        //rawVertexCoords.push(...[u,v]);
+        break;
+      }
+    }
   }
 
- // console.log(position.length);
-  return vertexCoords;
+  console.log(`Wczytano ${rawVertexPosition.length/3-1} wierzchołków`);
+  console.log(`Wczytano ${rawVertexNormal.length/3-1} wektorów normalnych`);
+  console.log(`Wczytano ${rawVertexCoords.length/2-1} współrzędnych tekstury`);
+
+  console.log(`W efekcie mapowania stworzono ${vertexPosition.length/3} wierzchołków`);
+  console.log(`W efekcie mapowania stworzono ${indexes.length} indeksów`);
+ 
+  //console.log(indexes);
+  //console.log(vertexPosition);
+  return [indexes, vertexPosition, vertexCoords];
 }
 
-
-
-function startGL() 
+async function startGL() 
 {
   alert("StartGL");
   let canvas = document.getElementById("canvas3D"); //wyszukanie obiektu w strukturze strony 
@@ -372,9 +159,9 @@ function startGL()
   //Kod shaderów
   const vertextShaderSource = ` //Znak akcentu z przycisku tyldy - na lewo od przycisku 1 na klawiaturze
     precision highp float;
-    attribute vec3 aVertexPosition; 
-    //attribute vec3 aVertexColor;
+    attribute vec3 aVertexPosition;
     attribute vec2 aVertexCoords;
+
     uniform mat4 uMVMatrix;
     uniform mat4 uPMatrix;
     varying vec3 vColor;
@@ -382,7 +169,7 @@ function startGL()
 
 
     void main(void) {
-      gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0); //Dokonanie transformacji położenia punktów z przestrzeni 3D do przestrzeni obrazu (2D)
+      gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0); 
       //vColor = aVertexColor;
       vTexUV = aVertexCoords;
     }
@@ -393,6 +180,7 @@ function startGL()
     varying vec2 vTexUV;
     
     uniform sampler2D uSampler;
+
     void main(void) {
       //gl_FragColor = vec4(vColor,1.0); //Ustalenie stałego koloru wszystkich punktów sceny
       gl_FragColor = texture2D(uSampler,vTexUV); //Odczytanie punktu tekstury i przypisanie go jako koloru danego punktu renderowaniej figury
@@ -420,19 +208,23 @@ function startGL()
   if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) alert("Could not initialise shaders");  //Sprawdzenie ewentualnych błedów
 
 
-  let vertexPosition = createDodecahedron()
-  // console.log(vertexPosition.length);
+  let vertexPosition; 
+  let vertexCoords;
+  let indexes;
+
+  [indexes, vertexPosition, vertexCoords] = await LoadObj('dodecahedron_texture.obj');
 
   vertexPositionBuffer = gl.createBuffer(); //Stworzenie tablicy w pamieci karty graficznej
   gl.bindBuffer(gl.ARRAY_BUFFER, vertexPositionBuffer);
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertexPosition), gl.STATIC_DRAW);
   vertexPositionBuffer.itemSize = 3; //zdefiniowanie liczby współrzednych per wierzchołek
-  vertexPositionBuffer.numItems = vertexPosition.length/(3*3) //Zdefinoiowanie liczby punktów w naszym buforze
+  vertexPositionBuffer.numItems = 36; //Zdefinoiowanie liczby punktów w naszym buforze
 
-
- let vertexCoords = createCoordsDode()
-  // console.log(vertexCoords);
-
+  indexBuffer = gl.createBuffer();
+  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
+  gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indexes), gl.STATIC_DRAW);
+  indexBuffer.itemSize = 3;
+  indexBuffer.numItems = indexes.length;
 
 
   vertexCoordsBuffer = gl.createBuffer();
@@ -440,6 +232,7 @@ function startGL()
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertexCoords), gl.STATIC_DRAW);
   vertexCoordsBuffer.itemSize = 2;
   vertexCoordsBuffer.numItems = 12;
+
 
   textureBuffer = gl.createTexture();
   var textureImg = new Image();
@@ -533,7 +326,7 @@ function Tick()
   gl.enableVertexAttribArray(gl.getAttribLocation(shaderProgram, "aVertexPosition"));  //Przekazanie położenia
   gl.bindBuffer(gl.ARRAY_BUFFER, vertexPositionBuffer);
   gl.vertexAttribPointer(gl.getAttribLocation(shaderProgram, "aVertexPosition"), vertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
-
+  
   gl.enableVertexAttribArray(gl.getAttribLocation(shaderProgram, "aVertexCoords"));  //Pass the geometry
   gl.bindBuffer(gl.ARRAY_BUFFER, vertexCoordsBuffer);
   gl.vertexAttribPointer(gl.getAttribLocation(shaderProgram, "aVertexCoords"), vertexCoordsBuffer.itemSize, gl.FLOAT, false, 0, 0);
@@ -542,9 +335,10 @@ function Tick()
   gl.bindTexture(gl.TEXTURE_2D, textureBuffer);
   gl.uniform1i(gl.getUniformLocation(shaderProgram, "uSampler"), 0);
   
-   gl.drawArrays(gl.TRIANGLES, 0, vertexPositionBuffer.numItems*vertexPositionBuffer.itemSize); //Faktyczne wywołanie rendrowania
-
-  //setTimeout(Tick,100);
+  // gl.drawArrays(gl.TRIANGLES, 0, vertexPositionBuffer.numItems*vertexPositionBuffer.itemSize); //Faktyczne wywołanie rendrowania
+  gl.drawElements(gl.TRIANGLES, indexBuffer.numItems, gl.UNSIGNED_SHORT, 0);
+  
+  // setTimeout(Tick,100);
   requestAnimationFrame(Tick);
 }
 function handlekeydown(e)
@@ -556,7 +350,7 @@ function handlekeydown(e)
  if(e.keyCode==81) angleZ=angleZ+5.0;
  if(e.keyCode==69) angleZ=angleZ-5.0;
  //alert(e.keyCode);
-
+ //alert(angleX);
 }
 </script>
 </head>
