@@ -89,11 +89,28 @@
         </div>
         <div class="spline"><canvas id="canvas3d"></canvas></div>
 
+        <div class="text-1_noborder">
+          <h1>Siatka</h1>
+          Z danego dwunastościanu tworzymy siatkę 2d która możemy prosto
+          wydrukować ( po kliknięciu "a" na klawiaturze możemy zobaczyć
+          tworzenie się takowej siatki, a po kliknięciu "d" wracamy do figury 3d
+          )
+        </div>
+
+        <div class="spline"><canvas id="canvas3dd"></canvas></div>
+
         <script type="module">
           import { Application } from "./runtime.js";
           const canvas = document.getElementById("canvas3d");
           const app = new Application(canvas);
           app.load("./spline_scene/scene.splinecode");
+        </script>
+
+        <script type="module">
+          import { Application } from "./runtime.js";
+          const canvass = document.getElementById("canvas3dd");
+          const appp = new Application(canvass);
+          appp.load("./spline_scene/scene1.splinecode");
         </script>
       </section>
     </main>
