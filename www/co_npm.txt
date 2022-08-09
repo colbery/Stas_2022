@@ -1,2 +1,0 @@
-npm init
-nodemon,express,body-parser
