@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link href="http://fonts.cdnfonts.com/css/pattaya" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <title>Sfera</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light px-2">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/sfera">Sfera</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container-fluid" style="background-color: #dbdbdb; padding: 0">
+      <div class="row">
+        <div class="col-6">
+          <div class="dwunastoscian_title">Dwunastościan</div>
+        </div>
+        <div class="col-6" style="background-color: #a2a2a2">
+          <div class="osmioscian_title">Ośmiościan ścięty</div>
+        </div>
+      </div>
+      <div
+        class="container-fluid"
+        style="background-color: #ffffff; padding: 0"
+      >
+        <div class="row">
+          <div class="col-6">
+            <div class="spline"><canvas id="canvas3d"></canvas></div>
+          </div>
+          <div class="col-6" style="background-color: #ffffff">
+            <div class="spline"><canvas id="canvas3dd"></canvas></div>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid" style="padding: 0">
+        <div class="row">
+          <div class="col-5" style="background-color: #fdf6dc">
+            <div class="discription_">
+              <div class="discription_title">Prześlij swoje zdjęcie.</div>
+              <div class="discription_text">
+                Prześlij swoje zdjęcie kilkajać przycisk “wybierz plik”,
+              </div>
+              <div class="discription_text_down">
+                Sprawdz na podglądzie czy efekt jest zadawalający i przejdz do
+                płatności aby pobrać obraz gotowy do wydruku.
+              </div>
+            </div>
+          </div>
+          <div class="col-2" style="background-color: #ffffff"></div>
+          <div class="col-5" style="background-color: #fdf6dc">
+            <div class="discription_">
+              <div class="discription_title">Instrukcja złożenia figury.</div>
+
+              <div class="discription_text_down">
+                Kliknij poniższy przycisk, aby pobrać dokładną instukcje
+                złożenia wybranej bryły
+                <div class="description_button">
+                  <button type="button" class="btn btn-dark">
+                    Pobierz Instrukcje
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module">
+      import { Application } from "./js/runtime.js";
+      const canvas = document.getElementById("canvas3d");
+      const app = new Application(canvas);
+      app.load("./spline_scene/scene.splinecode");
+    </script>
+    <script type="module">
+      import { Application } from "./js/runtime.js";
+      const canvass = document.getElementById("canvas3dd");
+      const appp = new Application(canvass);
+      appp.load("./spline_scene/scene2.splinecode");
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

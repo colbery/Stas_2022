@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link href="http://fonts.cdnfonts.com/css/pattaya" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <title>Home</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light px-2">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/sfera">Sfera</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container-fluid" style="background-color: #373737; padding: 0">
+      <div class="row">
+        <div class="col-4 my-auto">
+          <div class="top_bText">Dotknij swoje<br /></div>
+          <div class="top_bText" style="top: 17%; left: 10%">wspomnienia</div>
+          <p class="desc_under_bText">
+            Wydrukuj swoje zdjecie z wakacji w 3D i postaw na szafce!
+          </p>
+          <div class="row" style="margin-top: 10%">
+            <div class="col-6 my-auto" style="margin: auto; text-align: center">
+              <button type="button" class="btn btn-primary">Primary</button>
+            </div>
+            <div class="col-6 my-auto">
+              <button type="button" class="btn btn-secondary">Secondary</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6 my-auto">
+              <button type="button" class="btn btn-primary">Primary</button>
+            </div>
+            <div class="col-6 my-auto">
+              <button type="button" class="btn btn-secondary">Secondary</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-8">
+          <div
+            class="masthead bg-image"
+            style="
+              background-image: url('/images/freedom2_filter.png');
+              height: 95vh;
+              background-repeat: no-repeat;
+              background-size: cover;
+              min-width: 100%;
+            "
+          ></div>
+        </div>
+      </div>
+      <div
+        class="container-fluid"
+        style="background-color: #d9d9d9; padding: 0"
+      >
+        <div class="titl">Na czym to polega?</div>
+        <hr id="title_line" />
+        <div class="row">
+          <div class="col-6">
+            <div class="text_cont">
+              <div class="text_top">
+                Lubisz kupować pamiątki i stawiać je sobie na szafce, a może
+                wolisz robić zdjęcia pięknych widoków i wrzucać je do albumu?
+              </div>
+              <div class="text_mid">
+                A co jak chcesz połączyć obie te dwie rzeczy?
+              </div>
+              <div class="text_mid">
+                Jeśli tak to idealne miejsce dla ciebie!
+              </div>
+
+              <div class="text_mid">
+                Oferujemy możliwość wydruku zdjęć w postaci okrągłych figur
+                geometrycznych, które po złożeniu można postawić w dowolnym
+                miejscu w swoim domu i cieszyć się ich okazałoscią.
+              </div>
+              <div class="text_down">
+                Może to być piękna pamiątka wzbudzająca mase przyjemnych
+                wspomnień, może zwykłe zdjęcie z przyjaciółmi.
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="spline"><canvas id="canvas3d"></canvas></div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="container-fluid"
+        style="background-color: #e9e9e9; padding: 0"
+      >
+        <div class="titl">Jak to zrobić?</div>
+        <hr id="title_line" />
+        <div class="row">
+          <div class="col-10 mx-auto">
+            <div class="text_cont_sec">
+              <div class="numberCircle">1</div>
+              <div class="text_midSecond">
+                Przejdz do sekcji “Drukuj” klikając przycisk u góry lub na dole
+                strony.
+              </div>
+              <div class="numberCircle">2</div>
+              <div class="text_midSecond">
+                Wybierz figure i prześlij plik zdjęciowy (najlepiej zdjęcie
+                panoramiczne lub sferyczne) poprzez kliknięcie przycisku “wrzuć
+                zdjęcie”.
+              </div>
+              <div class="numberCircle">3</div>
+              <div class="text_midSecond">
+                Zapłać za usługe wyłącznie 1 zł poprzez płatność internetową
+                jeśli efekt na podglądzie jest zadawalający.
+              </div>
+              <div class="numberCircle">4</div>
+              <div class="text_midSecond">
+                Pobierz gotowy dokument w postaci siatki poprzez kliknięcie
+                prawego przycisku myszki -> pobierz
+              </div>
+              <div class="numberCircle">5</div>
+              <div class="text_midSecond">
+                Wydrukuj pobrany plik a następnie złóż go według podanych dalej
+                instrukcji.
+              </div>
+              <div class="numberCircle">6</div>
+              <div class="text_midSecond">
+                Ustaw złożone zdjęcie i ciesz się jej widokiem!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="container-fluid"
+        style="background-color: #ffffff; padding: 0"
+      >
+        <div class="row">
+          <div class="col-10 mx-auto">
+            <div class="spline"><canvas id="canvas3dd"></canvas></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid" style="background-color: #d9d9d9; padding: 0">
+      <div class="titl">Chcesz spróbować?</div>
+      <hr id="title_line" />
+      <div class="row">
+        <div class="col-6 mx-auto"></div>
+      </div>
+    </div>
+    <script type="module">
+      import { Application } from "./js/runtime.js";
+      const canvas = document.getElementById("canvas3d");
+      const app = new Application(canvas);
+      app.load("./spline_scene/scene.splinecode");
+    </script>
+    <script type="module">
+      import { Application } from "./js/runtime.js";
+      const canvass = document.getElementById("canvas3dd");
+      const appp = new Application(canvass);
+      appp.load("./spline_scene/scene1.splinecode");
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

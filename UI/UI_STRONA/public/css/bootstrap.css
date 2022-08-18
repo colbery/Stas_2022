@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+.top_bText {
+  font-family: "Pattaya", sans-serif;
+  font-size: 6vw;
+  font-style: normal;
+  color: #ffffff;
+  top: 8%;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: absolute !important;
+  padding-left: 10%;
+}
+
+.desc_under_bText {
+  font-family: "Offside";
+  color: #f2df3a;
+  text-align: left;
+  font-size: calc(12px + 1.5vw);
+
+  padding-left: 10%;
+}
+
+.titl {
+  font-family: "Pattaya", sans-serif;
+  text-align: center;
+  padding-top: 1%;
+  font-size: 6vh;
+}
+.spline {
+  min-height: 90%;
+  min-width: 100%;
+  overflow-y: hidden;
+}
+
+#title_line {
+  color: hsl(62, 100%, 50%);
+  height: 10px;
+  width: 50%;
+  margin: auto;
+}
+
+.text_cont {
+  padding-top: 5%;
+  padding-left: 5%;
+  padding-bottom: 5%;
+  font-size: x-large;
+  font-family: "Lato", sans-serif;
+}
+
+.text_cont_sec {
+  text-align: center;
+  font-size: x-large;
+  font-family: "Lato", sans-serif;
+  padding-top: 5%;
+}
+.text_mid {
+  padding-top: 5%;
+}
+.text_down {
+  padding-top: 5%;
+}
+
+.numberCircle {
+  margin: auto;
+  font-family: "Pattaya", sans-serif;
+  width: 60px;
+  line-height: 60px;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 32px;
+  border: 3px solid rgb(255, 251, 0);
+}
+
+.text_midSecond {
+  padding-bottom: 5%;
+}
+
+.dwunastoscian_title,
+.osmioscian_title {
+  text-align: center;
+  font-family: "Lato", sans-serif;
+  font-size: large;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+.discription_ {
+  text-align: center;
+}
+.discription_title {
+  font-family: "Pattaya", sans-serif;
+  font-size: x-large;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.discription_text {
+  font-family: "Lato", sans-serif;
+  padding-top: 1%;
+}
+
+.discription_text_down {
+  font-family: "Lato", sans-serif;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.description_button {
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
