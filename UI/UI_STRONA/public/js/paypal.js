@@ -20,7 +20,7 @@ export async function createOrder() {
         {
           amount: {
             currency_code: "PLN",
-            value: "5.00",
+            value: "1.00",
           },
         },
       ],

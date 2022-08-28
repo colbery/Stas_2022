@@ -16,6 +16,10 @@ app.get("/sfera", (req, res) => {
   res.render("sfera");
 });
 
+app.get(`/sfera/:orderId`, (req, res) => {
+  res.render("sferadruk");
+});
+
 app.post("/api/orders", async (req, res) => {
   const order = await paypal.createOrder();
   res.json(order);

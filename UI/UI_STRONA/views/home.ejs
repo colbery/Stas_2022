@@ -22,69 +22,117 @@
     <title>Home</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light px-2">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="#"
-              >Home <span class="sr-only">(current)</span></a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/sfera">Sfera</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <div class="container-fluid" style="background-color: #373737; padding: 0">
+    <div
+      class="container-fluid"
+      style="background-color: #373737; padding: 0; position: relative"
+    >
       <div class="row">
-        <div class="col-4 my-auto">
-          <div class="top_bText">Dotknij swoje<br /></div>
-          <div class="top_bText" style="top: 17%; left: 10%">wspomnienia</div>
+        <div class="col-5 my-auto">
+          <div class="top_bText" style="top: 1%; left: 5%">
+            Dotknij swoje<br />
+          </div>
+          <div class="top_bText" style="top: 5%; left: 15%">wspomnienia</div>
+          <div class="row">
+            <div class="col-12 my-auto" style="height: 33vh"></div>
+          </div>
           <p class="desc_under_bText">
             Wydrukuj swoje zdjecie z wakacji w 3D i postaw na szafce!
           </p>
-          <div class="row" style="margin-top: 10%">
-            <div class="col-6 my-auto" style="margin: auto; text-align: center">
-              <button type="button" class="btn btn-primary">Primary</button>
+
+          <div class="row">
+            <div class="col-6">
+              <div class="desc_test">Dowiedz się wiecej!</div>
             </div>
-            <div class="col-6 my-auto">
-              <button type="button" class="btn btn-secondary">Secondary</button>
+            <div class="col-6">
+              <div class="desc_test">Drukuj!</div>
             </div>
           </div>
           <div class="row">
-            <div class="col-6 my-auto">
-              <button type="button" class="btn btn-primary">Primary</button>
+            <div class="col-6">
+              <a data-scroll href="#text_cont">
+                <div class="svg_button">
+                  <svg
+                    width="112"
+                    height="107"
+                    viewBox="0 0 112 107"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M110.306 53.5876C110.306 82.203 86.1609 105.5 56.2514 105.5C26.3418 105.5 2.19696 82.203 2.19696 53.5876C2.19696 24.9722 26.3418 1.67511 56.2514 1.67511C86.1609 1.67511 110.306 24.9722 110.306 53.5876Z"
+                      fill="#373737"
+                      stroke="#D9D9D9"
+                      stroke-width="3"
+                    />
+                    <path
+                      d="M55.5645 73.4016C56.1535 73.9841 57.1032 73.9787 57.6857 73.3896L67.179 63.7898C67.7615 63.2007 67.7563 62.2509 67.1673 61.6685C66.5783 61.086 65.6286 61.0914 65.046 61.6805L56.6076 70.2137L48.0757 61.7765C47.4867 61.1941 46.537 61.1995 45.9544 61.7886C45.3719 62.3776 45.3771 63.3274 45.9661 63.9098L55.5645 73.4016ZM54.7257 0.841804L55.1193 72.3434L58.1192 72.3265L57.7257 0.824822L54.7257 0.841804Z"
+                      fill="#F2DF3A"
+                    />
+                  </svg>
+                </div>
+              </a>
             </div>
-            <div class="col-6 my-auto">
-              <button type="button" class="btn btn-secondary">Secondary</button>
+            <div class="col-6">
+              <a href="/sfera">
+                <div class="svg_button">
+                  <svg
+                    width="112"
+                    height="108"
+                    viewBox="0 0 112 108"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g filter="url(#filter0_b_0_1)">
+                      <path
+                        d="M109.669 53.9037C109.669 82.5191 85.5245 105.816 55.6149 105.816C25.7054 105.816 1.56055 82.5191 1.56055 53.9037C1.56055 25.2883 25.7054 1.99121 55.6149 1.99121C85.5245 1.99121 109.669 25.2883 109.669 53.9037Z"
+                        stroke="#D9D9D9"
+                        stroke-width="3"
+                      />
+                    </g>
+                    <path
+                      d="M75.9024 54.7896C76.4873 54.2038 76.486 53.2539 75.8995 52.6681L66.3411 43.1215C65.7545 42.5357 64.8048 42.5357 64.2199 43.1215C63.635 43.7073 63.6363 44.6572 64.2228 45.243L72.7192 53.7288L64.2462 62.2147C63.6612 62.8005 63.6625 63.7503 64.2491 64.3362C64.8356 64.922 65.7853 64.922 66.3702 64.3362L75.9024 54.7896ZM0.0626068 55.2289L74.8424 55.229L74.8383 52.2287L0.0584812 52.2287L0.0626068 55.2289Z"
+                      fill="#F2DF3A"
+                    />
+                    <defs>
+                      <filter
+                        id="filter0_b_0_1"
+                        x="-3.93945"
+                        y="-3.50879"
+                        width="119.109"
+                        height="114.825"
+                        filterUnits="userSpaceOnUse"
+                        color-interpolation-filters="sRGB"
+                      >
+                        <feFlood
+                          flood-opacity="0"
+                          result="BackgroundImageFix"
+                        />
+                        <feGaussianBlur in="BackgroundImage" stdDeviation="2" />
+                        <feComposite
+                          in2="SourceAlpha"
+                          operator="in"
+                          result="effect1_backgroundBlur_0_1"
+                        />
+                        <feBlend
+                          mode="normal"
+                          in="SourceGraphic"
+                          in2="effect1_backgroundBlur_0_1"
+                          result="shape"
+                        />
+                      </filter>
+                    </defs>
+                  </svg>
+                </div>
+              </a>
             </div>
           </div>
         </div>
-        <div class="col-8">
+        <div class="col-7">
           <div
             class="masthead bg-image"
             style="
               background-image: url('/images/freedom2_filter.png');
-              height: 95vh;
+              height: 100vh;
               background-repeat: no-repeat;
               background-size: cover;
               min-width: 100%;
@@ -93,6 +141,7 @@
         </div>
       </div>
       <div
+        id="text_cont"
         class="container-fluid"
         style="background-color: #d9d9d9; padding: 0"
       >
@@ -177,16 +226,70 @@
       >
         <div class="row">
           <div class="col-10 mx-auto">
-            <div class="spline"><canvas id="canvas3dd"></canvas></div>
+            <div class="spline">
+              <canvas id="canvas3dd"></canvas>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="container-fluid" style="background-color: #d9d9d9; padding: 0">
-      <div class="titl">Chcesz spróbować?</div>
+    <div class="container-fluid" style="background-color: #0d0d0d; padding: 0">
+      <div class="titl" style="color: #d9d9d9">Chcesz spróbować?</div>
       <hr id="title_line" />
       <div class="row">
-        <div class="col-6 mx-auto"></div>
+        <div class="col-6 mx-auto">
+          <div class="desc_test" style="padding-top: 5%; padding-bottom: 2%">
+            Drukuj!
+          </div>
+          <a href="/sfera">
+            <div class="svg_button" style="padding-bottom: 2%">
+              <svg
+                width="112"
+                height="108"
+                viewBox="0 0 112 108"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g filter="url(#filter0_b_0_1)">
+                  <path
+                    d="M109.669 53.9037C109.669 82.5191 85.5245 105.816 55.6149 105.816C25.7054 105.816 1.56055 82.5191 1.56055 53.9037C1.56055 25.2883 25.7054 1.99121 55.6149 1.99121C85.5245 1.99121 109.669 25.2883 109.669 53.9037Z"
+                    stroke="#D9D9D9"
+                    stroke-width="3"
+                  />
+                </g>
+                <path
+                  d="M75.9024 54.7896C76.4873 54.2038 76.486 53.2539 75.8995 52.6681L66.3411 43.1215C65.7545 42.5357 64.8048 42.5357 64.2199 43.1215C63.635 43.7073 63.6363 44.6572 64.2228 45.243L72.7192 53.7288L64.2462 62.2147C63.6612 62.8005 63.6625 63.7503 64.2491 64.3362C64.8356 64.922 65.7853 64.922 66.3702 64.3362L75.9024 54.7896ZM0.0626068 55.2289L74.8424 55.229L74.8383 52.2287L0.0584812 52.2287L0.0626068 55.2289Z"
+                  fill="#F2DF3A"
+                />
+                <defs>
+                  <filter
+                    id="filter0_b_0_1"
+                    x="-3.93945"
+                    y="-3.50879"
+                    width="119.109"
+                    height="114.825"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feGaussianBlur in="BackgroundImage" stdDeviation="2" />
+                    <feComposite
+                      in2="SourceAlpha"
+                      operator="in"
+                      result="effect1_backgroundBlur_0_1"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect1_backgroundBlur_0_1"
+                      result="shape"
+                    />
+                  </filter>
+                </defs>
+              </svg>
+            </div>
+          </a>
+        </div>
       </div>
     </div>
     <script type="module">
@@ -206,5 +309,6 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
+    <script src="path/to/smooth-scroll.polyfills.min.js"></script>
   </body>
 </html>
