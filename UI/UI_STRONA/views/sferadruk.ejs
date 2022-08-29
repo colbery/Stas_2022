@@ -591,7 +591,7 @@
       class="navbar navbar-expand-lg navbar-dark text-white px-2"
       style="background-color: #373737"
     >
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="/">360</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -606,18 +606,10 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="#"
-              >Home <span class="sr-only">(current)</span></a
-            >
+            <a class="nav-link" href="/">Strona główna</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/sfera">Sfera</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
           </li>
         </ul>
       </div>
@@ -667,10 +659,17 @@
 
           <div class="col-5" style="background-color: #fdf6dc">
             <div class="discription_" style="padding-left: 5%; padding-top: 5%">
-              <div class="discription_title">
-                <button class="baton">download</button>
+              <div class="discription_title">Pobierz</div>
+              <div
+                class="discription_textt"
+                style="padding-top: 5%; padding-bottom: 5%"
+              >
+                Po oteksturowaniu pobierz plik gotowy do wydruku w formacie PDF.
               </div>
-              <div id="paypal-button-container"></div>
+
+              <div>
+                <button class="baton">Pobierz plik</button>
+              </div>
             </div>
           </div>
           <div class="col-1" style="background-color: #fdf6dc"></div>
@@ -692,7 +691,11 @@
       const { jsPDF } = window.jspdf;
 
       download.addEventListener("click", function () {
-        var imgData = canvas.toDataURL("image/jpeg", 1.0);
+        // var imgData = canvas.toDataURL("image/jpeg", 1.0);
+        var imgData = canvas.toDataURL(canvas, "#ffffff", {
+          type: "image/jpeg",
+          encoderOptions: 1.0,
+        });
         var pdf = new jsPDF();
 
         pdf.addImage(imgData, "JPEG", 0, 0, 210, 297); //210, 297

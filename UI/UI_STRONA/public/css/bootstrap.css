@@ -204,6 +204,20 @@ input[type="file"] {
 
   height: 60vh;
 }
+
+.baton {
+  background-color: #fdf6dc;
+  font-family: "Lato", sans-serif;
+  border: 1px solid #ccc;
+  font-size: large;
+  padding: 1%;
+  transition: 0.5s;
+}
+
+.baton:hover {
+  background-color: white;
+  cursor: pointer;
+}
 @keyframes shake {
   10%,
   90% {
