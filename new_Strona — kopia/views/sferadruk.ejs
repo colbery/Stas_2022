@@ -335,7 +335,7 @@
         let indexes;
 
         [indexes, vertexPosition, vertexCoords] = await LoadObj(
-          "../obj/mesh_dode_v4.obj"
+          "../obj/net.obj"
         );
 
         vertexPositionBuffer = gl.createBuffer(); //Stworzenie tablicy w pamieci karty graficznej
@@ -586,7 +586,7 @@
     >
       <!-- flex container for nav items -->
 
-      <div class="w-full uppercase h-10 text-xl">
+      <div class="fontSettings w-full uppercase h-16 text-xl xl:text-3xl">
         <div class="w-2/3 mx-auto">
           <div class="justify-around my-auto flex flex-row space-x-4 p-2">
             <div>
@@ -594,11 +594,11 @@
                 >Strona Główna</a
               >
             </div>
-            <div>
+            <!-- <div>
               <a href="/sfera" class="hover:text-goldish font-opensans"
                 >Kup druk</a
               >
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
