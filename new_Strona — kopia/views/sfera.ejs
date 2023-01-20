@@ -621,13 +621,28 @@
           localforage.keys().then(function (keys) {
             this.keys = [];
             var f = document.getElementById("f");
+
+            var wybierz = document.getElementById("wybierzf");
+            var wybierzbutton = document.getElementById("wybierzfbutton");
+            var wyczyscbutton = document.getElementById("clear_button");
             var ul = document.getElementById("list");
+
             if (keys.length === 1) {
               f.setAttribute("disabled", "disabled");
+              wybierz.classList.add("text-goldish");
+              wybierzbutton.classList.add(
+                "bg-blackish",
+                "border-2",
+                "border-goldish"
+              );
+
               showImage(keys);
             }
             if (keys.length > 0) {
               clear_btn.disabled = false;
+              clear_btn.classList.remove("text-goldish");
+              wyczyscbutton.classList.remove("bg-blackish");
+              wyczyscbutton.classList.add("bg-goldish");
             }
 
             for (let i = 0; i < keys.length; i++) {
@@ -1032,6 +1047,7 @@
                 <div class="flex flex-col">
                   <div class="flex justify-around">
                     <p
+                      id="wybierzfbutton"
                       class="rounded-lg bg-goldish uppercase tracking-thewidest text-xl py-3 px-5 align-center m-2 font-sans"
                     >
                       <input
@@ -1043,15 +1059,18 @@
                       <input
                         type="button"
                         value="Wybierz plik"
+                        id="wybierzf"
                         onclick="document.getElementById('f').click();"
                       />
                     </p>
                     <p
-                      class="rounded-lg bg-goldish uppercase tracking-thewidest text-xl py-3 px-5 align-center m-2 font-sans"
+                      id="clear_button"
+                      class="rounded-lg bg-blackish border-2 border-goldish uppercase tracking-thewidest text-xl py-3 px-5 align-center m-2 font-sans"
                     >
                       <button
+                        class="WOW text-goldish"
                         id="clear_btn"
-                        onclick="clearData()"
+                        onclick="clearData();document.location.reload(true);"
                         disabled="true"
                       >
                         Wyczyść
@@ -1138,6 +1157,14 @@
     <script type="text/javascript">
       function clearData() {
         console.log("clear");
+        var wybierz = document.getElementById("wybierzf");
+        var wybierzbutton = document.getElementById("wybierzfbutton");
+        wybierz.classList.remove("text-goldish");
+        wybierzbutton.classList.remove(
+          "bg-blackish",
+          "border-2",
+          "border-goldish"
+        );
         log.textContent = "Clearing data...";
         for (let i = 0; i < this.keys.length; i++) {
           localforage.removeItem(this.keys[i]).then(() => {

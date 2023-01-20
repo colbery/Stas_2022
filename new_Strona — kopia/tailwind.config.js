@@ -24,6 +24,7 @@ module.exports = {
         goldish: "#FFD600",
         darkish: "#141414",
         grayish: "#333333",
+        blackish: "#414141",
       },
       fontFamily: {
         sans: ["Staatliches", "sans-serif"],
