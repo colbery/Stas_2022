@@ -209,6 +209,7 @@
             if (keys.length === 1) {
               f.setAttribute("disabled", "disabled");
               wybierz.classList.add("text-goldish");
+              wybierzbutton.classList.remove("bg-goldish");
               wybierzbutton.classList.add(
                 "bg-blackish",
                 "border-2",
@@ -592,9 +593,9 @@
       }
     </script>
   </head>
-  <body class="bg-darkish scroll-behavior: smooth;" onload="startGL()">
+  <body class="bg-darkishh scroll-behavior: smooth;" onload="startGL()">
     <nav
-      class="bg-darkish text-white sticky z-10 top-0 shadow-xl whitespace-nowrap"
+      class="bg-darkishh text-white sticky z-10 top-0 shadow-xl whitespace-nowrap"
     >
       <!-- flex container for nav items -->
 
@@ -640,7 +641,7 @@
                     <div class="flex justify-between">
                       <p
                         id="wybierzfbutton"
-                        class="rounded-lg bg-goldish uppercase tracking-thewidest text-xl py-3 px-5 align-center m-2 font-sans"
+                        class="rounded-lg bg-goldish uppercase tracking-thewidest text-xl py-3 md:px-5 px-4 align-center m-2 font-sans"
                       >
                         <input
                           type="file"
@@ -657,7 +658,7 @@
                       </p>
                       <p
                         id="clear_button"
-                        class="rounded-lg bg-blackish border-2 border-goldish uppercase tracking-thewidest text-xl py-3 px-5 align-center m-2 font-sans"
+                        class="rounded-lg bg-blackish border-2 border-goldish uppercase tracking-thewidest text-xl py-3 md:px-5 px-4 align-center m-2 font-sans"
                       >
                         <button
                           class="WOW text-goldish"
@@ -702,7 +703,7 @@
     </div>
     <pre id="log" style="visibility: hidden"></pre>
     <pre id="stats" style="visibility: hidden"></pre>
-    <footer class="w-full bg-darkish py-12 border-t-2 border-[#999]">
+    <footer class="w-full bg-darkishh py-12 border-t-2 border-[#999]">
       <div class="flex flex-row justify-center">
         <p class="text-white text-center self-center text-xs">
           ©Copyright 2022 Walksee??????
@@ -739,6 +740,7 @@
         var wybierz = document.getElementById("wybierzf");
         var wybierzbutton = document.getElementById("wybierzfbutton");
         wybierz.classList.remove("text-goldish");
+
         wybierzbutton.classList.remove(
           "bg-blackish",
           "border-2",

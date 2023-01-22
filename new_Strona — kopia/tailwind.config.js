@@ -24,6 +24,7 @@ module.exports = {
         goldish: "#FFD600",
         blueish: "#228be6",
         // goldish: "#01c7e4",
+        darkishh: "#141414",
         darkish: "#222222",
         grayish: "#333333",
         midGray: "#666",

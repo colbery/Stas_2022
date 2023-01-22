@@ -630,6 +630,7 @@
             if (keys.length === 1) {
               f.setAttribute("disabled", "disabled");
               wybierz.classList.add("text-goldish");
+              wybierzbutton.classList.remove("bg-goldish");
               wybierzbutton.classList.add(
                 "bg-blackish",
                 "border-2",
@@ -998,13 +999,13 @@
     <title>Sfera</title>
   </head>
   <body
-    class="bg-darkish scroll-behavior: smooth;"
+    class="bg-darkishh scroll-behavior: smooth;"
     onload="startGL()"
     onkeydown="handlekeydown(event)"
   >
     <script src="https://www.paypal.com/sdk/js?client-id=ASJv0eLnnfcq7X9OsAnR8CTYqE4Yz5rYy5W3OCxHiuDjm-mk25ZH90YesHU4VeI4ppSYBGHZHuq96Gau&currency=PLN"></script>
     <nav
-      class="bg-darkish text-white sticky z-10 top-0 shadow-xl whitespace-nowrap"
+      class="bg-darkishh text-white sticky z-10 top-0 shadow-xl whitespace-nowrap"
     >
       <!-- flex container for nav items -->
 
@@ -1041,14 +1042,18 @@
           <div class="">
             <div class="flex flex-col md:flex-row align-middle">
               <div class="md:w-1/2 mx-auto">
-                <canvas id="canvas3D" width="640" height="480"></canvas>
+                <canvas
+                  id="canvas3D"
+                  class="left-0 md:z-0 mx-auto mt-8 mb-8"
+                  height="300"
+                ></canvas>
               </div>
               <div class="md:w-1/2">
                 <div class="flex flex-col">
                   <div class="flex justify-between">
                     <p
                       id="wybierzfbutton"
-                      class="rounded-lg bg-goldish uppercase tracking-thewidest text-xl py-3 px-5 align-center m-2 font-sans"
+                      class="min-w-1/3 rounded-lg bg-goldish uppercase tracking-thewidest text-xl py-3 md:px-5 px-4 align-center md:m-2 font-sans"
                     >
                       <input
                         type="file"
@@ -1065,7 +1070,7 @@
                     </p>
                     <p
                       id="clear_button"
-                      class="rounded-lg bg-blackish border-2 border-goldish uppercase tracking-thewidest text-xl py-3 px-5 align-center m-2 font-sans"
+                      class="min-w-1/3 rounded-lg bg-blackish border-2 border-goldish uppercase tracking-thewidest text-xl py-3 md:px-5 px-4 align-center md:m-2 font-sans"
                     >
                       <button
                         class="WOW text-goldish"
@@ -1079,7 +1084,7 @@
                   </div>
                   <div class="flex justify-around my-10">
                     <p
-                      class="rounded-lg bg-goldish w-full uppercase tracking-thewidest text-xl py-3 px-5 align-center m-2 font-sans"
+                      class="rounded-lg bg-goldish min-w-full uppercase tracking-thewidest text-xl py-3 px-5 align-center m-2 font-sans"
                     >
                       <button class="baton">Pobierz plik</button>
                     </p>
@@ -1092,7 +1097,7 @@
 -->
                   </div>
                   <div class="flex justify-around m-2">
-                    <div id="paypal-button-container" class="w-full"></div>
+                    <div id="paypal-button-container" class="min-w-full"></div>
                   </div>
                 </div>
               </div>
@@ -1105,7 +1110,7 @@
     <pre id="log" style="visibility: hidden"></pre>
     <pre id="stats" style="visibility: hidden"></pre>
 
-    <footer class="w-full bg-darkish py-12">
+    <footer class="w-full bg-darkishh py-12">
       <div class="flex flex-row justify-center">
         <p class="text-white text-center self-center text-xs">
           ©Copyright 2022 Walksee??????
