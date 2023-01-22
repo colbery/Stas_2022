@@ -245,7 +245,15 @@
             clearImage();
           }
         }
-
+        //rozwiazanie problemu trzecia strona(pobieranie pdf ,druk ) nie ladowala siatki majac zapisane zdjecie w localForage
+        window.addEventListener("load", function () {
+          function showImage(filename) {
+            log.textContent = "loading: " + filename + "...";
+            localforage.getItem(filename).then((blob) => {
+              textureImg.src = URL.createObjectURL(blob);
+            });
+          }
+        });
         function showImage(filename) {
           log.textContent = "loading: " + filename + "...";
           localforage.getItem(filename).then((blob) => {
