@@ -1085,18 +1085,21 @@
                   </div>
                   <div class="flex justify-around my-10">
                     <p
-                      class="rounded-lg bg-goldish min-w-full uppercase tracking-thewidest text-xl py-3 px-5 align-center m-2 font-sans"
+                      class="rounded-lg bg-blackish border-2 border-goldish min-w-full uppercase tracking-thewidest text-xl py-3 px-5 align-center m-2 font-sans"
                     >
-                      <button class="baton">Pobierz plik</button>
+                      <button class="baton text-goldish disabled">Pobierz plik</button>
                     </p>
-                    <!--
+
+                      <!--
                     <p
                       class="rounded-lg bg-goldish uppercase tracking-thewidest text-xl py-3 px-5 align-center m-2 font-sans"
                     >
                       <button class="showNet">Pokaż siatkę</button>
                     </p>
 -->
+                    </p>
                   </div>
+
                   <div class="flex justify-around m-2">
                     <div
                       id="paypal-button-container"
@@ -1136,6 +1139,7 @@
             color: "gold",
             layout: "horizontal",
             label: "paypal",
+            tagline: false
           },
           // Sets up the transaction when a payment button is clicked
           createOrder: function (data, actions) {

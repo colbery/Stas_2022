@@ -204,12 +204,17 @@
             var wybierz = document.getElementById("wybierzf");
             var wybierzbutton = document.getElementById("wybierzfbutton");
             var wyczyscbutton = document.getElementById("clear_button");
+            var pobierz = document.getElementById("pobierz");
+            var pobierzbutton = document.getElementById("pobierzbutton");
             var ul = document.getElementById("list");
 
             if (keys.length === 1) {
               f.setAttribute("disabled", "disabled");
               wybierz.classList.add("text-goldish");
               wybierzbutton.classList.remove("bg-goldish");
+              pobierzbutton.classList.remove("bg-blackish");
+              pobierz.classList.remove("text-goldish");
+              pobierzbutton.classList.add("bg-goldish");
               wybierzbutton.classList.add(
                 "bg-blackish",
                 "border-2",
@@ -681,9 +686,12 @@
 
                     <div class="flex justify-around my-10">
                       <p
-                        class="rounded-lg bg-goldish w-full uppercase tracking-thewidest text-xl py-3 px-5 align-center m-2 font-sans"
+                        id="pobierzbutton"
+                        class="rounded-lg bg-blackish border-2 border-goldish w-full uppercase tracking-thewidest text-xl py-3 px-5 align-center m-2 font-sans"
                       >
-                        <button class="baton">Pobierz plik</button>
+                        <button class="baton text-goldish" id="pobierz">
+                          Pobierz plik
+                        </button>
                       </p>
                       <!--
                       <p
