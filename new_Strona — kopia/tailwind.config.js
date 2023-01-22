@@ -17,21 +17,25 @@ module.exports = {
       "7xl": "72px",
     },
     letterSpacing: {
-      thewidest: ".19em",
+      thewidest: ".1em",
     },
     extend: {
       colors: {
         goldish: "#FFD600",
-        darkish: "#141414",
+        blueish: "#228be6",
+        // goldish: "#01c7e4",
+        darkish: "#222222",
         grayish: "#333333",
-        blackish: "#414141",
+        midGray: "#666",
+        whitish: "#ddd",
+        blackish: "#1b1b1b",
       },
       fontFamily: {
         sans: ["Staatliches", "sans-serif"],
         opensans: ["Open Sans", "sans-serif"],
       },
       backgroundImage: (theme) => ({
-        bgW: "url('../images/whitemode/bgW.png')",
+        bgW: "url('../images/whitemode/bgW4.webp')",
         globeW: "url('../images/whitemode/globeW.png')",
         heartW: "url('../images/whitemode/heartW.png')",
         likeW: "url('../images/whitemode/likeW.png')",
@@ -40,7 +44,7 @@ module.exports = {
         smileW: "url('../images/whitemode/smileW.png')",
         sunW: "url('../images/whitemode/sunW.png')",
 
-        bgD: "url('../images/darkmode/bgD.png')",
+        bgD: "url('../images/darkmode/bgD.webp')",
         globeD: "url('../images/darkmode/globeD.png')",
         heartD: "url('../images/darkmode/heartD.png')",
         likeD: "url('../images/darkmode/likeD.png')",
@@ -48,9 +52,12 @@ module.exports = {
         scissorsD: "url('../images/darkmode/scissorsD.png')",
         smileD: "url('../images/darkmode/smileD.png')",
         sunD: "url('../images/darkmode/sunD.png')",
-
         bgG: "url('../images/img/blury.svg')",
       }),
+      dropShadow: {
+        black: "2px 0px 2px rgba(0, 0, 0, 0.5)",
+        white: "0 2px 0px rgba(1, 1, 1, 1)",
+      },
     },
   },
   variants: {
