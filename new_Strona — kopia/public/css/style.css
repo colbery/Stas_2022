@@ -582,9 +582,6 @@ video {
 .float-left {
   float: left;
 }
-.m-3 {
-  margin: 0.75rem;
-}
 .m-2 {
   margin: 0.5rem;
 }
@@ -793,6 +790,9 @@ video {
 }
 .overflow-hidden {
   overflow: hidden;
+}
+.overflow-x-auto {
+  overflow-x: auto;
 }
 .whitespace-nowrap {
   white-space: nowrap;

@@ -25,11 +25,13 @@ app.get(`/sfera/:orderId`, (req, res) => {
 
 app.post("/api/orders", async (req, res) => {
   const order = await paypal.createOrder();
+  console.log("tworzone w serwerze");
   res.json(order);
 });
 
 app.post("/api/orders/:orderId/capture", async (req, res) => {
   const { orderId } = req.params;
+  console.log("zlapany w serwerze");
   const captureData = await paypal.capturePayment(orderId);
   res.json(captureData);
 });

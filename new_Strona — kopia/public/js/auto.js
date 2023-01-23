@@ -11,10 +11,10 @@ if (localStorage.getItem("auto")) {
   nie.classList.remove("hidden");
 }
 
-showNet.addEventListener("click", myShow);
+//showNet.addEventListener("click", myShow);
 
 //xd
-function myShow() {
-  canvasNet.classList.toggle("hidden");
-  canvasNet.scrollIntoView();
-}
+//function myShow() {
+//  canvasNet.classList.toggle("hidden");
+//  canvasNet.scrollIntoView();
+//}

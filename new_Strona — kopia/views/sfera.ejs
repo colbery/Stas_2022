@@ -611,13 +611,13 @@
 
       function startGL() {
         f.onchange = upload;
-        var img = null;
+        f.onload = upload;
+        var img = "";
         var keys = [];
         var bytes = 0;
-        var numFiles = 0;
+      
 
         function getKeys() {
-          log.textContent = "Getting keys...";
           localforage.keys().then(function (keys) {
             this.keys = [];
             var f = document.getElementById("f");
@@ -654,21 +654,21 @@
               this.keys.push(keys[i]);
             }
 
-            log.textContent = "Done";
+           
           });
         }
         getKeys();
         //getFile();
 
         function stopAll() {
-          console.log("stop all");
+         
           if (this.img) {
             clearImage();
           }
         }
 
         function showImage(filename) {
-          log.textContent = "loading: " + filename + "...";
+          
           localforage.getItem(filename).then((blob) => {
             textureImg.src = URL.createObjectURL(blob);
           });
@@ -681,30 +681,21 @@
 
         function upload() {
           const promises = [];
-          log.textContent = "Adding to localstorage...";
+  
 
           for (let i = 0; i < this.files.length; i++) {
-            addBytes(this.files[0].size);
             const promise = localforage.setItem(this.files[i].name, f.files[i]);
+            
             promises.push(promise);
           }
 
           Promise.all(promises).then(() => {
-            log.textContent = "Added Successfully.";
+           
             getKeys();
           });
         }
 
-        function addBytes(bytes) {
-          console.log("param bytes: " + bytes);
-          console.log("numFiles bytes: " + this.numFiles);
-          this.bytes += bytes;
-          this.numFiles += 1;
-          console.log("numFiles: " + this.numFiles);
-          console.log("total bytes: " + this.bytes);
-          stats.textContent =
-            this.numFiles + " items and " + this.bytes + " total bytes";
-        }
+      
         let canvas = document.getElementById("canvas3D"); //wyszukanie obiektu w strukturze strony
         gl = canvas.getContext("experimental-webgl"); //pobranie kontekstu OpenGL'u z obiektu canvas
         gl.viewportWidth = canvas.width; //przypisanie wybranej przez nas rozdzielczości do systemu OpenGL
@@ -1009,7 +1000,7 @@
     >
       <!-- flex container for nav items -->
 
-      <div class="fontSettings w-full uppercase h-16 text-xl xl:text-3xl">
+      <div class="fontSettings w-full uppercase h-12 text-xl xl:text-3xl">
         <div class="w-2/3 mx-auto">
           <div class="justify-around my-auto flex flex-row space-x-4 p-2">
             <div>
@@ -1041,14 +1032,16 @@
         <div class="w-3/4 text-center mx-auto pt-10">
           <div class="">
             <div class="flex flex-col md:flex-row align-middle">
-              <div class="md:w-1/2 mx-auto">
-                <canvas
-                  id="canvas3D"
-                  class="left-0 md:z-0 mx-auto mt-8 mb-8"
-                  width="420"
-                  height="400"
-                ></canvas>
-              </div>
+              
+        <div class="mx-auto">
+          <canvas
+            id="canvas3D"
+            class="left-0 md:z-0 mx-auto mt-8 mb-8 "
+            height="350"
+          ></canvas>
+        </div>
+
+              
               <div class="md:w-1/2">
                 <div class="flex flex-col">
                   <div class="flex justify-between">
@@ -1149,6 +1142,7 @@
               .then((response) => response.json())
               .then((response) => {
                 console.log(response);
+                console.log("tworzenie zakupu")
                 return response.id;
               });
           },
@@ -1183,7 +1177,7 @@
     </script>
     <script type="text/javascript">
       function clearData() {
-        console.log("clear");
+        
         var wybierz = document.getElementById("wybierzf");
         var wybierzbutton = document.getElementById("wybierzfbutton");
         wybierz.classList.remove("text-goldish");
@@ -1192,10 +1186,10 @@
           "border-2",
           "border-goldish"
         );
-        log.textContent = "Clearing data...";
+        
         for (let i = 0; i < this.keys.length; i++) {
           localforage.removeItem(this.keys[i]).then(() => {
-            log.textContent = "Done";
+          
             clear_btn.disabled = true;
             f.removeAttribute("disabled");
             var ul = document.getElementById("list");

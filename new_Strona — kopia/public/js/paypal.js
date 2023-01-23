@@ -6,6 +6,7 @@ const { CLIENT_ID, APP_SECRET } = process.env;
 const base = "https://api-m.sandbox.paypal.com";
 
 async function createOrder() {
+  console.log("createorder js");
   const accessToken = await generateAccessToken();
   const url = `${base}/v2/checkout/orders`;
   const response = await fetch(url, {
@@ -32,6 +33,7 @@ async function createOrder() {
 }
 
 async function capturePayment(orderId) {
+  console.log("capturepayment js");
   const accessToken = await generateAccessToken();
   const url = `${base}/v2/checkout/orders/${orderId}/capture`;
   const response = await fetch(url, {
@@ -47,6 +49,7 @@ async function capturePayment(orderId) {
 }
 // fetch version
 async function generateAccessToken() {
+  console.log("generateaccesstooken js");
   const response = await fetch(base + "/v1/oauth2/token", {
     method: "post",
     body: "grant_type=client_credentials",
@@ -56,6 +59,7 @@ async function generateAccessToken() {
     },
   });
   const data = await response.json();
+  console.log("HALO");
   return data.access_token;
 }
 
