@@ -207,14 +207,20 @@
             var pobierz = document.getElementById("pobierz");
             var pobierzbutton = document.getElementById("pobierzbutton");
             var ul = document.getElementById("list");
+            var showNet = document.getElementById("showNet");
+            var showNetbutton = document.getElementById("NetButton");
 
             if (keys.length === 1) {
               f.setAttribute("disabled", "disabled");
               wybierz.classList.add("text-goldish");
               wybierzbutton.classList.remove("bg-goldish");
               pobierzbutton.classList.remove("bg-blackish");
+              showNetbutton.classList.remove("bg-goldish");
+              showNetbutton.classList.remove("bg-blackish");
               pobierz.classList.remove("text-goldish");
+              showNet.classList.remove("text-goldish");
               pobierzbutton.classList.add("bg-goldish");
+              showNetbutton.classList.add("bg-goldish");
               wybierzbutton.classList.add(
                 "bg-blackish",
                 "border-2",
@@ -265,7 +271,6 @@
           const promises = [];
 
           for (let i = 0; i < this.files.length; i++) {
-            addBytes(this.files[0].size);
             const promise = localforage.setItem(this.files[i].name, f.files[i]);
             promises.push(promise);
           }
@@ -585,7 +590,7 @@
     </script>
   </head>
   <body
-    class="bg-darkishh scroll-behavior: smooth;"
+    class="bg-darkishh scroll-behavior: smooth;overflow-x-hidden"
     onload="startGL();"
     onkeydown="handlekeydown(event)"
   >
@@ -629,11 +634,8 @@
             <div class="">
               <div class="flex flex-col md:flex-row align-middle">
                 <div class="md:w-1/2 mx-auto">
-                  <img src="/images/img/dodesim.png" alt="" />
-                </div>
-                <div class="md:w-1/2">
                   <div class="flex flex-col">
-                    <div class="flex justify-between">
+                    <div class="flex justify-around">
                       <p
                         id="wybierzfbutton"
                         class="rounded-lg bg-goldish uppercase tracking-thewidest text-xl py-3 md:px-5 px-4 align-center m-2 font-sans"
@@ -667,22 +669,32 @@
                     </div>
 
                     <div class="flex justify-around my-10">
-                      <p
-                        id="pobierzbutton"
-                        class="rounded-lg bg-blackish border-2 border-goldish w-full uppercase tracking-thewidest text-xl py-3 px-5 align-center m-2 font-sans"
-                      >
-                        image.png
-                        <button class="baton text-goldish" id="pobierz">
-                          Pobierz plik
-                        </button>
-                      </p>
-                      <!--
-                      <p
-                        class="rounded-lg bg-goldish uppercase tracking-thewidest text-xl py-3 px-5 align-center m-2 font-sans"
-                      >
-                        <button class="showNet">Pokaż siatkę</button>
-                      </p>
-  -->
+                      <div class="m-2">
+                        <p
+                          id="pobierzbutton"
+                          class="rounded-lg bg-blackish border-2 border-goldish w-full uppercase tracking-thewidest text-xl py-3 md:px-5 px-4 align-center font-sans"
+                        >
+                          <button
+                            class="baton text-goldish text-center"
+                            id="pobierz"
+                          >
+                            Pobierz plik
+                          </button>
+                        </p>
+                      </div>
+                      <div class="m-2">
+                        <p
+                          id="NetButton"
+                          class="rounded-lg bg-blackish border-2 border-goldish w-full uppercase tracking-thewidest text-xl py-3 md:px-5 px-4 align-center font-sans"
+                        >
+                          <button
+                            id="showNet"
+                            class="showNet baton text-goldish text-center"
+                          >
+                            Pokaż siatkę
+                          </button>
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -692,16 +704,21 @@
         </div>
       </section>
       <!-- rozwiązanie problemu czasem zdjecie sie nie ładowało poniewaz na canvas bylo hidden -->
-      <section class="mx-auto hidden">
-        <canvas id="canvas3D" width="1050" height="1485"></canvas>
+      <section id="canvasnet" class="mx-auto hidden">
+        <canvas
+          id="canvas3D"
+          width="1050"
+          height="1485"
+          class="mx-auto"
+        ></canvas>
       </section>
     </div>
     <pre id="log" style="visibility: hidden"></pre>
     <pre id="stats" style="visibility: hidden"></pre>
-    <footer class="w-full bg-darkishh py-12 border-t-2 border-[#999]">
+    <footer class="w-full bg-darkishh py-12 fixed inset-x-0 bottom-0">
       <div class="flex flex-row justify-center">
         <p class="text-white text-center self-center text-xs">
-          ©Copyright 2022 Walksee??????
+          ©Copyright 2022 Walksee
           <br />
           Wszelkie prawa zastrzeżone
           <br />
