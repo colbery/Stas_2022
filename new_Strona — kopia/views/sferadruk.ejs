@@ -252,6 +252,7 @@
         function showImage(filename) {
           localforage.getItem(filename).then((blob) => {
             textureImg.src = URL.createObjectURL(blob);
+            console.log(textureImg.src);
           });
         }
 

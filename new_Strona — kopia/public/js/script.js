@@ -213,7 +213,7 @@ async function startGL()
   let vertexCoords;
   let indexes;
 
-  [indexes, vertexPosition, vertexCoords] = await LoadObj('/obj/net.obj');
+  [indexes, vertexPosition, vertexCoords] = await LoadObj('net.obj');
 
   vertexPositionBuffer = gl.createBuffer(); //Stworzenie tablicy w pamieci karty graficznej
   gl.bindBuffer(gl.ARRAY_BUFFER, vertexPositionBuffer);
@@ -226,7 +226,7 @@ async function startGL()
   gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indexes), gl.STATIC_DRAW);
   indexBuffer.itemSize = 3;
   indexBuffer.numItems = indexes.length;
-  console.log(vertexPositionBuffer);
+
 
   vertexCoordsBuffer = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, vertexCoordsBuffer);

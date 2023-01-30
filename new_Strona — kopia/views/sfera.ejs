@@ -671,6 +671,7 @@
           
           localforage.getItem(filename).then((blob) => {
             textureImg.src = URL.createObjectURL(blob);
+            console.log(textureImg.src);
           });
         }
 
@@ -685,7 +686,7 @@
 
           for (let i = 0; i < this.files.length; i++) {
             const promise = localforage.setItem(this.files[i].name, f.files[i]);
-            
+           
             promises.push(promise);
           }
 
@@ -1008,13 +1009,13 @@
                 >Strona Główna</a
               >
             </div>
-            <!-- <div>
+            <div>
               <a
                 onclick="location.href = `/sfera/${window.localStorage.auto.slice(1,-1)}`;"
                 class="hover:text-goldish font-opensans"
                 >Drukuj</a
               >
-            </div> -->
+            </div> 
           </div>
         </div>
       </div>

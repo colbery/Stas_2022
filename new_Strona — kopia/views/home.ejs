@@ -35,7 +35,7 @@
     <script src="./js/autoplayMP4.js"></script>
   </head>
   <body
-    class="relative overflow-x-auto text-grayish dark:bg-darkish scroll-behavior: smooth;"
+    class="relative overflow-x-hidden text-grayish dark:bg-darkish scroll-behavior: smooth;"
     onload="startGL()"
   >
     <!-- hero section -->
@@ -75,21 +75,21 @@
         >
           <a
             href="#about-us"
-            class="fontSettings block hover:dark:text-goldish hover:text-blueish transition uppercase hover:scale-x-105 text-2xl w-full"
+            class="panel fontSettings block hover:dark:text-goldish hover:text-blueish transition uppercase hover:scale-x-105 text-2xl w-full"
           >
             <div class="w-full py-12 text-center">O nas</div>
           </a>
 
           <a
             href="#instruction"
-            class="fontSettings block hover:dark:text-goldish hover:text-blueish uppercase transition hover:scale-x-105 text-2xl w-full"
+            class="panel fontSettings block hover:dark:text-goldish hover:text-blueish uppercase transition hover:scale-x-105 text-2xl w-full"
           >
             <div class="w-full py-12 text-center">instrukcja</div>
           </a>
 
           <a
             href="#walksee"
-            class="fontSettings block hover:dark:text-goldish hover:text-blueish uppercase transition hover:scale-x-105 text-2xl w-full"
+            class="panel fontSettings block hover:dark:text-goldish hover:text-blueish uppercase transition hover:scale-x-105 text-2xl w-full"
           >
             <div class="w-full py-12 text-center">zdjecia 360</div>
           </a>
@@ -171,7 +171,7 @@
           <a
             href="#about-us"
             class="traciking-widest transition-colors duration-300 hover:dark:text-goldish hover:text-blueish"
-            >About ???</a
+            >Opis</a
           >
           <a
             href="#instruction"
@@ -689,7 +689,7 @@
           <div class="md:w-1/2 flex justify-end hidden dark:flex">
             <video autoplay playsinline loop class="src w-full transition">
               <source
-                src="./videos/1-mpeg4-h264-lowest-dark-srgb.mp4"
+                src="./videos/1/1-mpeg4-h264-lowest-dark-srgb.mp4"
                 type="video/mp4"
               />
               <!-- <source src="movie.ogg" type="video/ogg"> -->
@@ -699,7 +699,7 @@
           <div class="md:w-1/2 flex justify-end dark:hidden">
             <video autoplay playsinline loop class="src w-full transition">
               <source
-                src="./videos/1-mpeg4-h264-lowest-srgb.mp4"
+                src="./videos/1/1-mpeg4-h264-lowest-srgb.mp4"
                 type="video/mp4"
               />
               <!-- <source src="movie.ogg" type="video/ogg"> -->
@@ -709,9 +709,19 @@
         </div>
 
         <div class="py-10 flex flex-col-reverse md:flex-row mx-auto">
-          <div class="md:w-1/2 flex justify-end">
+          <div class="md:w-1/2 flex justify-end hidden dark:flex">
             <video autoplay playsinline loop class="src w-full transition">
-              <source src="./videos/2.mp4" type="video/mp4" />
+              <source src="./videos/2/2_mpeg4_h264_dark.mp4" type="video/mp4" />
+              <!-- <source src="movie.ogg" type="video/ogg"> -->
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="md:w-1/2 flex justify-end dark:hidden">
+            <video autoplay playsinline loop class="src w-full transition">
+              <source
+                src="./videos/2/2_mpeg4_h264_white.mp4"
+                type="video/mp4"
+              />
               <!-- <source src="movie.ogg" type="video/ogg"> -->
               Your browser does not support the video tag.
             </video>
@@ -757,9 +767,22 @@
               wybranego wcześniej zdjęcia lub obrazu.
             </p>
           </div>
-          <div class="md:w-1/2 flex justify-end">
+          <div class="md:w-1/2 flex justify-end hidden dark:flex">
             <video autoplay playsinline loop class="src w-full transition">
-              <source src="./videos/3.mp4" type="video/mp4" />
+              <source
+                src="./videos/3/3_mpeg4_h264_dark_tiny.mp4"
+                type="video/mp4"
+              />
+              <!-- <source src="movie.ogg" type="video/ogg"> -->
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="md:w-1/2 flex justify-end dark:hidden">
+            <video autoplay playsinline loop class="src w-full transition">
+              <source
+                src="./videos/3/3_mpeg4_h264_white.mp4"
+                type="video/mp4"
+              />
               <!-- <source src="movie.ogg" type="video/ogg"> -->
               Your browser does not support the video tag.
             </video>
@@ -781,11 +804,26 @@
             </p>
           </div>
           <div class="md:w-1/2 flex justify-end">
-            <video autoplay playsinline loop class="src w-full transition">
-              <source src="./videos/4.mp4" type="video/mp4" />
-              <!-- <source src="movie.ogg" type="video/ogg"> -->
-              Your browser does not support the video tag.
-            </video>
+            <div class="flex justify-end hidden dark:flex">
+              <video autoplay playsinline loop class="src w-full transition">
+                <source
+                  src="./videos/4/4_mpeg4_h264_dark_very_low (1).mp4"
+                  type="video/mp4"
+                />
+                <!-- <source src="movie.ogg" type="video/ogg"> -->
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="flex justify-end dark:hidden">
+              <video autoplay playsinline loop class="src w-full transition">
+                <source
+                  src="./videos/4/4_mpeg4_h264_white_very_low (3).mp4"
+                  type="video/mp4"
+                />
+                <!-- <source src="movie.ogg" type="video/ogg"> -->
+                Your browser does not support the video tag.
+              </video>
+            </div>
           </div>
         </div>
       </div>

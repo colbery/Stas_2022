@@ -5,18 +5,18 @@ function videoScroll() {
 
   if ( document.querySelectorAll('video[autoplay]').length > 0) {
     var windowHeight = window.innerHeight,
-        videoEl = document.querySelectorAll('video[autoplay]');
+        video = document.querySelectorAll('video[autoplay]');
 
-    for (var i = 0; i < videoEl.length; i++) {
+    for (var i = 0; i < video.length; i++) {
 
-      var thisVideoEl = videoEl[i],
-          videoHeight = thisVideoEl.clientHeight,
-          videoClientRect = thisVideoEl.getBoundingClientRect().top;
+      var thisVideo = video[i],
+          videoHeight = thisVideo.clientHeight,
+          videoClientRect = thisVideo.getBoundingClientRect().top;
 
       if ( videoClientRect <= ( (windowHeight) - (videoHeight*.5) ) && videoClientRect >= ( 0 - ( videoHeight*.5 ) ) ) {
-        thisVideoEl.play();
+        thisVideo.play();
       } else {
-        thisVideoEl.pause();
+        thisVideo.pause();
       }
 
     }

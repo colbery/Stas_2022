@@ -689,6 +689,9 @@ video {
 .h-1\/2 {
   height: 50%;
 }
+.h-12 {
+  height: 3rem;
+}
 .w-full {
   width: 100%;
 }
@@ -791,8 +794,8 @@ video {
 .overflow-hidden {
   overflow: hidden;
 }
-.overflow-x-auto {
-  overflow-x: auto;
+.overflow-x-hidden {
+  overflow-x: hidden;
 }
 .whitespace-nowrap {
   white-space: nowrap;

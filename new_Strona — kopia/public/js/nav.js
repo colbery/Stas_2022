@@ -16,6 +16,7 @@ const logo = document.getElementById("logo");
 
 //tabs nasluchiwanie
 tabs.forEach((tab) => tab.addEventListener("click", onTabClick));
+panels.forEach((panel) => panel.addEventListener("click", closeNav));
 
 //ham button listener
 btn.addEventListener("click", navToggle);
@@ -54,6 +55,14 @@ function navToggle() {
   } else {
     logo.setAttribute("src", "./images/logo-bookmark.svg");
   }
+}
+
+function closeNav() {
+  setTimeout(() => {
+    btn.classList.toggle("open");
+    menu.classList.toggle("flex");
+    menu.classList.toggle("hidden");
+  }, 500);
 }
 
 if (

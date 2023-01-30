@@ -28,6 +28,8 @@ async function createOrder() {
     }),
   });
   const data = await response.json();
+  console.log("to tutaj co tu pokazuje");
+  console.log(data.id);
   console.log(data);
   return data;
 }
